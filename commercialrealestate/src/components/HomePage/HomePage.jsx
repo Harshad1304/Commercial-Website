@@ -2,6 +2,8 @@ import React from 'react'
 
 //pages
 import BannerPage from '../BannerPage/BannerPage'
+import Overview from '../Overview/Overview'
+import ProjectShowcasePage from '../ProjectShowcasePage/ProjectShowcasePage'
 
 
 function HomePage() {
@@ -12,7 +14,13 @@ function HomePage() {
         <div className='banner-page'>
             <BannerPage />
         </div>
-
+        {/* Overview-Page */}
+        <section className='sec-1'>
+          <Overview />
+        </section>    
+        <section className='sec-2'>
+          <ProjectShowcasePage />
+        </section>  
     </div>
   )
 }
