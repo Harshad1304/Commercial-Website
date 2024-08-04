@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // icons
 import { IoLocationOutline } from 'react-icons/io5';
 import { TbGeometry } from 'react-icons/tb';
 import { RiParkingBoxLine } from 'react-icons/ri';
+import PopupModel from '../Popup/PopupModel';
 
 export default function ProjectShowcasePage() {
+
+    const [isPopupOpen, setPopupOpen] = useState(false);
   return (
     <div className='min-h-screen w-full pt-28'>
-
+    
       <h2 className='text-2xl md:text-5xl font-semibold text-center border-b-2 border-black mx-8 md:mx-48 pb-4 mb-10 md:mb-20'>
         Commercial Properties for Rent / Lease in Thane
       </h2>
@@ -22,15 +25,18 @@ export default function ProjectShowcasePage() {
             area={det.area}
             parking={det.parking}
             key={i}
+            openPopup={()=>{setPopupOpen(true)}}
           />
         ))}
       </div>
+
+      <PopupModel isOpen={isPopupOpen} closePopup={()=>{setPopupOpen(false)}} pdf={false}/>
 
     </div>
   );
 }
 
-function ProjectCards({ picture, propertyName, location, area, parking }) {
+function ProjectCards({openPopup, picture, propertyName, location, area, parking }) {
   return (
     <div className='rounded-xl col-span-1 md:col-span-6 flex flex-col md:flex-row shadow-lg shadow-black hover:shadow-2xl hover:shadow-black duration-300'>
       <div className='md:min-w-[40%] h-60 md:h-auto rounded-lg overflow-hidden'>
@@ -48,7 +54,7 @@ function ProjectCards({ picture, propertyName, location, area, parking }) {
         <p className='text-base md:text-xl flex items-center gap-2 text-black/75'>
           <RiParkingBoxLine /> Parking: {parking}
         </p>
-        <button className='self-start border-b border-slate-400 text-base md:text-2xl bg-indigo-800 text-white font-bold py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition mt-1 ease-in-out duration-300'>
+        <button onClick={openPopup} className='self-start border-b border-slate-400 text-base md:text-2xl bg-indigo-800 text-white font-bold py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition mt-1 ease-in-out duration-300'>
           Get Best Deals
         </button>
       </div>

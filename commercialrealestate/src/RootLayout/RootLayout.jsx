@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 function RootLayout(){
     return(
         <div className="rootlayout">
+            
             <header>
                 <nav>
                     <Navbar />
@@ -11,10 +12,12 @@ function RootLayout(){
             </header>
             <main>
                 <Outlet />
+               
             </main>
             <footer>
                 <Footer />
             </footer>
+            
         </div>
     )
 }
